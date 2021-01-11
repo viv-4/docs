@@ -129,7 +129,8 @@ The data returned doesn't include username, just MAC addresses where available a
     },
     {
       "location": "desk",
-      "at_location": true,
+      "capacity": 1,
+      "at_location": 1,
       "map_id": "desk-4-1006",
       "mac": "66e0fd1279ce",
       "level": "zone_1234",
