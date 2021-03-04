@@ -13,23 +13,14 @@ There should be one of these modules configured per-building
 
 ## Configuration
 
-By default the view is updated once a minute, this batching rate can be increased based on requirements. Every 20 seconds would be a good maximum fast rate, systems like meraki only provide updated location information every minute so there is diminishing returns for higher rates.
+By default the view is updated once a minute, this batching rate can be increased based on requirements. Every 15 seconds would be a good maximum fast rate, systems like meraki only provide updated location information every minute so there is diminishing returns for higher rates.
 
 ```yaml
 # The building this driver is monitoring
 building: zone-12345
 
-# The driver queries the API for zone metadata
-placeos_domain: 'https://myplaceos.org.com'
-username: service_account@local.com
-password: <MASKED>
-
-# Create or grab an application for accessing the API
-client_id: 808ef0948864cd464dfbd64cba9c85ad
-client_secret: yADfsu7X5_3K22qgv6ExJBO7hW4C_AEN25CK-NXtEyu2i1hh33em9A
-
 # Poll rate in seconds
-poll_rate: 60
+poll_rate: 15
 
 # 1.0 == no duplicate devices
 # 0.8 == 20% of devices are probably duplicates (phone + laptop)
@@ -37,6 +28,18 @@ duplication_factor: 0.8
 
 # Driver to query for location information
 location_service: LocationServices
+```
+
+You'll also need to configure the `PlaceOS Staff API` driver for obtaining zone information via the public API
+
+```yaml
+    # Create a service account for API access
+    username:     "service_account@placeos.com"
+    password:     "put this in an encrypted tab"
+    
+    # Create or grab an application for accessing the API
+    client_id:    ""
+    redirect_uri: ""
 ```
 
 
